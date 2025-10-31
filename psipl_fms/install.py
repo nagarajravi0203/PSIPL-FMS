@@ -1,39 +1,51 @@
 import frappe
 
 def after_install():
-    # create Module Def if not exists
-    if not frappe.db.exists("Module Def", "PSIPL FMS"):
-        frappe.get_doc({"doctype":"Module Def", "module_name":"PSIPL FMS", "app_name":"psipl_fms"}).insert(ignore_permissions=True)
-        frappe.db.commit()
-        
+    """Run after app is installed"""
+    create_module_def()
     create_contact_submission_webform()
+
+
+def create_module_def():
+    """Ensure Module Def for PSIPL FMS exists"""
+    if not frappe.db.exists("Module Def", "PSIPL FMS"):
+        frappe.get_doc({
+            "doctype": "Module Def",
+            "module_name": "PSIPL FMS",
+            "app_name": "psipl_fms"
+        }).insert(ignore_permissions=True)
+        frappe.db.commit()
+        print("✅ Module Def 'PSIPL FMS' created successfully")
+    else:
+        print("ℹ️ Module Def 'PSIPL FMS' already exists")
+
 
 def create_contact_submission_webform():
     """Create the Contact Submission Web Form if not exists"""
-    if not frappe.db.exists("Web Form", "contact-submission"):
+    if not frappe.db.exists("Web Form", {"route": "contact-submission"}):
         webform = frappe.get_doc({
             "doctype": "Web Form",
+            "module": "PSIPL FMS",
             "title": "Contact Submission",
             "route": "contact-submission",
-            "module": "PSIPL FMS",
-            "doctype_name": "Contact Submission",
+            "web_form_name": "contact_submission",
+            "is_standard": 0,
             "published": 1,
-            "is_standard": 1,
+            "login_required": 0,
+            "doc_type": "Contact Submission",
             "web_form_fields": [
                 {
                     "fieldname": "full_name",
                     "label": "Full Name",
                     "fieldtype": "Data",
-                    "reqd": 1,
-                    "show_in_list": 1
+                    "reqd": 1
                 },
                 {
                     "fieldname": "email",
                     "label": "Email",
                     "fieldtype": "Data",
                     "options": "Email",
-                    "reqd": 1,
-                    "show_in_list": 1
+                    "reqd": 1
                 },
                 {
                     "fieldname": "message",
