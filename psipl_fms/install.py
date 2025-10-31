@@ -67,7 +67,7 @@ def create_lead_entry_webform():
     if not frappe.db.exists("Web Form", {"route": "lead-entry"}):
         webform = frappe.get_doc({
             "doctype": "Web Form",
-            "module": "CRM",
+            "module": "PSIPL FMS",
             "title": "Lead Entry",
             "route": "lead-entry",
             "web_form_name": "lead_entry",
