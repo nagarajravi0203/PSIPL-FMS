@@ -1,0 +1,34 @@
+{
+  "doctype": "DocType",
+  "name": "Contact Submission",
+  "module": "PSIPL FMS",
+  "custom": 0,
+  "fields": [
+    {
+      "fieldname": "full_name",
+      "label": "Full Name",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "email",
+      "label": "Email",
+      "fieldtype": "Data",
+      "options": "Email"
+    },
+    {
+      "fieldname": "message",
+      "label": "Message",
+      "fieldtype": "Small Text"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "create": 1,
+      "read": 1,
+      "write": 1,
+      "delete": 1
+    }
+  ]
+}
