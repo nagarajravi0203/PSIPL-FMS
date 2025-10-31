@@ -1,6 +1,6 @@
 {
   "doctype": "DocType",
-  "name": "Lead Entry Item",
+  "name": "Lead Entry",
   "module": "PSIPL FMS",
   "custom": 0,
   "is_submittable": 0,
