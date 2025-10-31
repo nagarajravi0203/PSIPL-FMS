@@ -1,0 +1,25 @@
+{
+  "doctype": "DocType",
+  "name": "PSIPL FMS Item",
+  "module": "PSIPL FMS",
+  "custom": 0,
+  "is_submittable": 0,
+  "fields": [
+    {
+      "fieldname": "email",
+      "label": "email",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    { "fieldname": "name", "label": "name", "fieldtype": "Data" }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1
+    }
+  ]
+}

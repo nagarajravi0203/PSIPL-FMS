@@ -5,6 +5,8 @@ app_description = "PSIPL FMS app"
 app_email = "nagaraj.delibo@gmail.com"
 app_license = "mit"
 
+after_install = "psipl_fms.install.after_install"
+
 # Apps
 # ------------------
 
